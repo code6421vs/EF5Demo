@@ -1,0 +1,16 @@
+﻿CREATE FUNCTION [dbo].[GetCustomerByName]
+(
+	@name nvarchar(120)
+)
+RETURNS @report TABLE
+(
+	Id int,
+	[Name] nvarchar(120)
+)
+AS
+BEGIN
+	INSERT @report
+	SELECT Id, [Name] FROM Customers
+	WHERE [Name] Like @name
+	RETURN
+END
